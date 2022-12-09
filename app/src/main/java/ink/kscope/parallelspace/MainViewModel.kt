@@ -17,6 +17,7 @@
 package ink.kscope.parallelspace
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -45,6 +46,8 @@ class MainViewModel(private val context: Application) : AndroidViewModel(context
         viewModelScope.launch {
             users.value = withContext(Dispatchers.Default) {
                 val result = arrayListOf<MinimalUserInfo>()
+                val TAGG = "OK"
+                Log.i(TAGG,"${SystemInterfaces.getParallelUsers().size} + Raphael is cursed bro")
                 for (user in SystemInterfaces.getParallelUsers()) {
                     result.add(
                         MinimalUserInfo(
